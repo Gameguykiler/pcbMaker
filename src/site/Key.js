@@ -25,16 +25,6 @@ function Key(keyName, keySize, switchType, row, stabilizer)
 }
 
 /**
- * Creates a default Key.
- *
- * 
- */
-// function Key()
-// {
-//     Key('', new KeySize(1, 1), SwitchType.DEFAULT, Row.R1, Stabilizer.NONE);
-// }
-
-/**
  * Sets the value of keyName.
  *
  * @param{string} keyName The name of the key.

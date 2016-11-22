@@ -14,11 +14,12 @@ Row =
 
 Row.matchRow = function(value)
 {
-    for(var row in Row)
+    var keys = Object.keys(Row);
+    for(var key of keys)
     {
-        if(row.valueOf() == value)
+        if(Row[key] == value)
         {
-            return row;
+            return key;
         }
     }
     return Row.R1;

@@ -14,11 +14,12 @@ Stabilizer =
 
 Stabilizer.matchStabilizer = function(value)
 {
-    for(var stabilizer in Stabilizer)
+    var keys = Object.keys(Stabilizer);
+    for(var stabilizer of keys)
     {
-        if(stabilizer.valueOf() == value)
+        if(Stabilizer[key] == value)
         {
-            return stabilizer;
+            return key;
         }
     }
     return Stabilizer.NONE;
