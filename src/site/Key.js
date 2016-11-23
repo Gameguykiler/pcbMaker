@@ -135,6 +135,22 @@ Key.prototype.resetKey = function()
 };
 
 /**
+ * Returns a clone of this key.
+ *
+ * @return{Key} A copy of this key.
+ */
+Key.prototype.clone = function()
+{
+    var copy = new Key();
+    copy.setKeyName(this._keyName);
+    copy.setKeySize(this._keySize);
+    copy.setRow(this._row);
+    copy.setStabilizer(this._stabilizer);
+    copy.setSwitchType(this._switchType);
+    return copy;
+};
+
+/**
  * Returns this Key as a string.
  *
  * @return{string} This key.

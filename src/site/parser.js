@@ -6,11 +6,11 @@ goog.require('pcbMaker.Key');
  * Transforms a raw string into an array of rows of the keyboard.
  *
  * @param{string} rawData The raw data from keyboard-layout-editor.com.
+ *
  * @return{Array.<string>} The rows of the keyboard.
  */
 function rawToArr(rawData)
 {
-    console.log('-----'.repeat(25));
     var arr = [];
     var prev = 0;
     var inString = false;
@@ -28,19 +28,11 @@ function rawToArr(rawData)
             index = i;
             line = rawData.substring(prev, index + 1);
             lineKeysArr = parseLine(line);
-            console.log(lineKeysArr);
+            arr += [lineKeysArr];
             prev = index + 3;
             i += 3;
         }
     }
-    // while(rawData.indexOf(']', prev) != -1)
-    // {
-    //     index = rawData.indexOf(']', prev);
-    //     line = rawData.substring(prev, index + 1);
-    //     lineKeysArr = parseLine(line);
-    //     console.log(lineKeysArr);
-    //     prev = index + 3;
-    // }
     return arr;
 }
 
@@ -111,14 +103,12 @@ function parseLine(line)
             {
                 state = 'default';
                 key.setKeyName(line.substring(marker, i));
-                console.log('Adding key: ' + key);
                 keys.push(key);
+                key = key.clone();
                 key.resetKey();
             }
         }
     }
-    // console.log('state ended on: ' + state + ', marker was: ' + marker);
-    // console.log('total line : ' + line);
     return keys;
 }
 
@@ -133,7 +123,6 @@ function parseLine(line)
  */
 function updateKey(key, name, value)
 {
-    // console.log('attempting to update with key: ' + key + ', name: ' + name + ', value: ' + value);
     switch(determineCharacteristicNumber(name))
     {
     case 0:
@@ -158,7 +147,7 @@ function updateKey(key, name, value)
  * Parses a characteristic name to determine which characteristic it refers to.
  *
  * @param{string} name The name of the characteristic.
-
+ *
  * @return{number} A number corresponding to a characteristic of a key.  0 is
  *     keySize, 1 is switchType, 2 is row, 3 is stabilizer, and -1 is anything else.
  */

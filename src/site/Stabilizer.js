@@ -15,7 +15,7 @@ Stabilizer =
 Stabilizer.matchStabilizer = function(value)
 {
     var keys = Object.keys(Stabilizer);
-    for(var stabilizer of keys)
+    for(var key of keys)
     {
         if(Stabilizer[key] == value)
         {
